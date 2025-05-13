@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Top Menu + Sidebar -->
+  <div class="navbar">
+    <span class="menu-icon" onclick="toggleSidebar()">☰</span>
+    <h1><a href="admin-dashboard.html">Admin Panel</a></h1>
+    <div class="nav-links">
+      <a href="index.html">Store</a>
+      <a href="admin-dashboard.html">Dashboard</a>
+      <a href="#" onclick="logout()">Logout</a>
+    </div>
+  </div>
+
+  <div id="sidebar" class="sidebar">
+    <a href="javascript:void(0)" onclick="toggleSidebar()">✖ Close</a>
+    <a href="admin-dashboard.html">Dashboard</a>
+    <a href="index.html">Go to Store</a>
+    <a href="#" onclick="logout()">Logout</a>
+  </div>
+
+  <!-- Dashboard Content -->
+  <h1>Welcome, Admin</h1>
+  <p style="text-align: center;">Here you can manually add product data, view incoming orders (if backend is connected), and manage content.</p>
+
+  <script>
+    function toggleSidebar() {
+      const sidebar = document.getElementById("sidebar");
+      sidebar.style.width = sidebar.style.width === "250px" ? "0" : "250px";
+    }
+
+    function logout() {
+      localStorage.removeItem("isAdmin");
+      window.location.href = "admin-login.html";
+    }
+
+    // Redirect if not logged in
+    if (localStorage.getItem("isAdmin") !== "true") {
+      alert("Access denied. Please login as admin.");
+      window.location.href = "admin-login.html";
+    }
+  </script>
+</body>
+</html>

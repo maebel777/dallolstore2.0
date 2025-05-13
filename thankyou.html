@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Thank You</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="navbar">
+        <span class="menu-icon" onclick="toggleSidebar()">☰</span>
+         <span class="company-name">Dallol Store</span>
+         
+      </div>
+      
+      <div id="sidebar" class="sidebar">
+        <a href="javascript:void(0)" onclick="toggleSidebar()">✖ Close</a>
+        <a href="index.html">Home</a>
+        <a href="cart.html">Cart</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      
+  <h1>Thank You!</h1>
+  <p>Your order has been received. We'll contact you soon.</p>
+  <center><a href="index.html"><button>Return Home</button></a></center>
+  <script>
+    function toggleSidebar() {
+      const sidebar = document.getElementById("sidebar");
+      sidebar.style.width = sidebar.style.width === "250px" ? "0" : "250px";
+    }
+  </script>
+  <footer style="text-align:center; padding:20px; background:#07e1f1; color:white;">
+    © 2025 Dallol Store | Built with care in Ethiopia
+  </footer>
+  
+</body>
+</html>

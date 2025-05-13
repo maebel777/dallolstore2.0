@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Contact Us - Index.com</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .contact-container {
+      max-width: 500px;
+      margin: 80px auto;
+      background: white;
+      padding: 20px;
+      box-shadow: 0 0 10px #ccc;
+      border-radius: 5px;
+    }
+
+    .contact-container input, .contact-container textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      resize: vertical;
+    }
+
+    .contact-container button {
+      background-color: #007bff;
+      margin-top: 15px;
+    }
+
+    .contact-container button:hover {
+      background-color: #0056b3;
+    }
+
+    .success-message {
+      display: none;
+      color: green;
+      margin-top: 10px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar & Sidebar -->
+  <div class="navbar">
+    <span class="menu-icon" onclick="toggleSidebar()">☰</span>
+     
+    <span class="company-name">Dallol Store</span>
+    <link rel="icon" href="favicon.png">
+
+  </div>
+
+  <div id="sidebar" class="sidebar">
+    <a href="javascript:void(0)" onclick="toggleSidebar()">✖ Close</a>
+    <a href="index.html">Home</a>
+    <a href="cart.html">Cart</a>
+   
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <!-- Contact Form -->
+  <div class="contact-container">
+    <h2>Contact Us</h2>
+    <form onsubmit="submitContactForm(event)">
+      <input type="text" id="name" placeholder="Your Name" required>
+      <input type="email" id="email" placeholder="Your Email" required>
+      <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+      <p class="success-message" id="successMsg">Thank you! We’ll get back to you soon.</p>
+    </form>
+  </div>
+
+  <script>
+    function toggleSidebar() {
+      const sidebar = document.getElementById("sidebar");
+      sidebar.style.width = sidebar.style.width === "250px" ? "0" : "250px";
+    }
+
+    function submitContactForm(e) {
+      e.preventDefault();
+
+      // Simulate form handling — you can later replace this with a real backend API
+      document.getElementById("successMsg").style.display = "block";
+
+      // Optionally clear form
+      document.getElementById("name").value = "";
+      document.getElementById("email").value = "";
+      document.getElementById("message").value = "";
+    }
+  </script>
+<footer style="text-align:center; padding:20px; background:#01f0f8; color:white;">
+    © 2025 Dallol Store  
+  </footer>
+  
+</body>
+</html>

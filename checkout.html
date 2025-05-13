@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Checkout</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="navbar">
+        <span class="menu-icon" onclick="toggleSidebar()">☰</span>
+        
+        <span class="company-name">Dallol Store</span>
+      </div>
+      
+      <div id="sidebar" class="sidebar">
+        <a href="javascript:void(0)" onclick="toggleSidebar()">✖ Close</a>
+        <a href="index.html">Home</a>
+        <a href="cart.html">Cart</a>
+        <a href="contact.html">Contact</a> 
+      </div>
+      
+  <h1>Checkout</h1>
+  <form onsubmit="submitOrder(event)">
+    <input type="text" id="name" placeholder="Full Name" required>
+    <input type="text" id="phone" placeholder="Phone Number" required>
+    <input type="text" id="address" placeholder="Address" required>
+    <br>
+    <button type="submit">Submit Order</button>
+  </form>
+
+  <script src="script.js"></script>
+  <script>
+    function submitOrder(event) {
+      event.preventDefault();
+      const name = document.getElementById("name").value;
+      const phone = document.getElementById("phone").value;
+      const address = document.getElementById("address").value;
+      const cart = loadCart();
+
+      const order = {
+        name, phone, address,
+        items: cart
+      };
+
+      console.log("Order submitted:", order);
+
+      // Save to file/database or send to email here (backend)
+      clearCart();
+      window.location.href = "thankyou.html";
+    }
+  </script>
+  <script>
+    function toggleSidebar() {
+      const sidebar = document.getElementById("sidebar");
+      sidebar.style.width = sidebar.style.width === "250px" ? "0" : "250px";
+    }
+  </script>
+  <footer style="text-align:center; padding:20px; background:#0deccf; color:white;">
+    © 2025 Dallol Store  
+
+
+
+    
+  </footer>
+  
+</body>
+</html>

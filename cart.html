@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cart</title>
+  <link rel="stylesheet" href="style.css">
+  
+</head>
+<body>
+    <div class="navbar">
+        <span class="menu-icon" onclick="toggleSidebar()">☰</span>
+        <span class="company-name">Dallol Store</span>
+      </div>
+      
+      <div id="sidebar" class="sidebar">
+        <a href="javascript:void(0)" onclick="toggleSidebar()">✖ Close</a>
+        <a href="index.html">Home</a>
+        <a href="cart.html">Cart</a>
+        <a href="contact.html">Contact</a> 
+          </div>
+      
+  <h1>Your Cart</h1>
+  <a href="index.html">← Continue Shopping</a>
+  <div class="cart-items" id="cartItems"></div>
+  <br><br>
+  <center><a href="checkout.html"><button>Proceed to Checkout</button></a></center>
+
+  <script src="script.js"></script>
+  <script>
+    const cartItems = document.getElementById("cartItems");
+    const cart = loadCart();
+
+    if (cart.length === 0) {
+      cartItems.innerHTML = "<p>Your cart is empty.</p>";
+    } else {
+      cart.forEach(item => {
+        const div = document.createElement("div");
+        div.className = "cart-item";
+        div.innerHTML = `<h4>${item.name}</h4><p>$${item.price}</p>`;
+        cartItems.appendChild(div);
+      });
+    }
+  </script>
+  <script>
+    function toggleSidebar() {
+      const sidebar = document.getElementById("sidebar");
+      sidebar.style.width = sidebar.style.width === "250px" ? "0" : "250px";
+    }
+  </script>
+  <footer style="text-align:center; padding:20px; background:#07f7eb; color:white;">
+    © 2025 Dallol Store 
+  </footer>
+  
+</body>
+</html>
