@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login - Dallol Store</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .form-container {
+      max-width: 400px;
+      margin: 80px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 6px;
+      box-shadow: 0 0 10px #ccc;
+    }
+    .form-container input, .form-container button {
+      width: 100%;
+      margin-top: 10px;
+      padding: 10px;
+    }
+    .signup-link {
+      text-align: center;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="navbar">
+    <span class="menu-icon" onclick="toggleSidebar()">☰</span>
+    <div class="brand">
+      <img src="logo.png" class="logo" alt="">
+      <span class="company-name">Dallol Store</span>
+    </div>
+  </div>
+
+  <div id="sidebar" class="sidebar">
+    <a href="javascript:void(0)" onclick="toggleSidebar()">✖ Close</a>
+    <a href="index.html">Home</a>
+    <a href="cart.html">Cart</a>
+    <a href="contact.html">Contact</a>
+    <a href="signup.html">Sign Up</a>
+  </div>
+
+  <div class="form-container">
+    <h2>Login</h2>
+    <input type="tel" id="loginPhone" placeholder="Phone Number" required>
+    <input type="password" id="loginPassword" placeholder="Password" required>
+    <button onclick="handleLogin()">Login</button>
+    <p id="loginError" style="color: red; display: none;">Invalid phone or password.</p>
+    <div class="signup-link">
+        <p>Don't have an account? <a href="signup.html" style="background-color: #4CAF50; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">Sign Up</a></p>
+      </div>
+      
+  </div>
+
+  <script>
+    function toggleSidebar() {
+      const sidebar = document.getElementById("sidebar");
+      sidebar.style.width = sidebar.style.width === "250px" ? "0" : "250px";
+    }
+
+    function handleLogin() {
+      const phone = document.getElementById("loginPhone").value;
+      const password = document.getElementById("loginPassword").value;
+      const storedUser = localStorage.getItem("user_" + phone);
+      
+      if (storedUser) {
+        const user = JSON.parse(storedUser);
+        if (user.password === password) {
+          localStorage.setItem("currentUser", JSON.stringify(user));
+          window.location.href = "index.html";
+        } else {
+          document.getElementById("loginError").style.display = "block";
+        }
+      } else {
+        document.getElementById("loginError").style.display = "block";
+      }
+    }
+  </script>
+</body>
+</html>

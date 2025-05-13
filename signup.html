@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up - Dallol Store</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Add your styles here */
+    .form-container {
+      max-width: 400px;
+      margin: 80px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 6px;
+      box-shadow: 0 0 10px #ccc;
+    }
+    .form-container input, .form-container button {
+      width: 100%;
+      margin-top: 10px;
+      padding: 10px;
+    }
+    .login-link {
+      text-align: center;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="navbar">
+    <span class="menu-icon" onclick="toggleSidebar()">☰</span>
+    <div class="brand">
+      <img src="logo.png" class="logo" alt="">
+      <span class="company-name">Dallol Store</span>
+    </div>
+  </div>
+
+  <div id="sidebar" class="sidebar">
+    <a href="javascript:void(0)" onclick="toggleSidebar()">✖ Close</a>
+    <a href="index.html">Home</a>
+    <a href="cart.html">Cart</a>
+    <a href="contact.html">Contact</a>
+    <a href="login.html">Login</a>
+  </div>
+
+  <div class="form-container">
+    <h2>Sign Up</h2>
+    <input type="text" id="signupName" placeholder="Your Name" required>
+    <input type="tel" id="signupPhone" placeholder="Phone Number" required>
+    <input type="password" id="signupPassword" placeholder="Password" required>
+    <button onclick="handleSignUp()">Sign Up</button>
+    <p id="signupError" style="color: red; display: none;">Please fill in all fields.</p>
+    <div class="login-link">
+      <p>Already have an account? <a href="login.html">Login</a></p>
+    </div>
+  </div>
+
+  <script>
+    function handleSignUp() {
+      const name = document.getElementById("signupName").value;
+      const phone = document.getElementById("signupPhone").value;
+      const password = document.getElementById("signupPassword").value;
+      const errorMessage = document.getElementById("signupError");
+
+      // Validate fields
+      if (name === "" || phone === "" || password === "") {
+        errorMessage.style.display = "block";
+        return;
+      } else {
+        errorMessage.style.display = "none";
+      }
+
+      // Save user data to localStorage
+      const user = {
+        name: name,
+        phone: phone,
+        password: password,
+      };
+      
+      localStorage.setItem("user_" + phone, JSON.stringify(user));
+
+      // Redirect to homepage after successful sign-up
+      window.location.href = "index.html";
+    }
+  </script>
+
+</body>
+</html>
+ 
